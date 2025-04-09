@@ -66,7 +66,8 @@ Explicación sencilla: Esta función es como enviar una carta para pedir un nuev
 7. displayTasks(): Actualizamos lo que se ve en pantalla
 8. try/catch: Es como un plan B - si algo falla, mostramos un mensaje de error
 #### READ - Leer tareas
-```// READ - Obtener todas las tareas
+``` javascript
+// READ - Obtener todas las tareas
 async function fetchTasks() {
     try {
         loadingDiv.style.display = 'block';
@@ -94,7 +95,8 @@ Explicación sencilla: Esta función es como pedir un catálogo de productos:
 5. displayTasks(): Mostramos las tareas en la pantalla
 6. finally: Al final, pase lo que pase, ocultamos el mensaje de carga y mostramos la tabla
 #### UPDATE - Actualizar una tarea
-```// UPDATE - Actualizar una tarea existente
+``` javascript
+// UPDATE - Actualizar una tarea existente
 async function updateTask(id, title, completed) {
     try {
         const response = await fetch(`${API_URL}/${id}`, {
@@ -134,7 +136,8 @@ Explicación sencilla: Esta función es como enviar un formulario para modificar
 4. tasks[index] = updatedTask: Reemplazamos la tarea vieja por la actualizada
 5. displayTasks(): Actualizamos lo que se ve en pantalla
 #### DELETE - Eliminar una tarea
-```// DELETE - Eliminar una tarea
+```javascript
+// DELETE - Eliminar una tarea
 async function deleteTask(id) {
     try {
         await fetch(`${API_URL}/${id}`, {
@@ -158,7 +161,8 @@ Explicación sencilla: Esta función es como enviar una solicitud para eliminar 
 3. displayTasks(): Actualizamos la pantalla para reflejar los cambios
 ### 4. Funciones de apoyo
 #### Mostrar tareas en pantalla
-```// Función para mostrar las tareas en la tabla
+``` javascript
+// Función para mostrar las tareas en la tabla
 function displayTasks() {
     tasksList.innerHTML = '';
 
@@ -219,7 +223,8 @@ Explicación sencilla: Esta función es como poner productos en un escaparate:
 8. tasksList.appendChild(row): Ponemos la fila en la tabla
 9. Al final, hacemos que los botones "escuchen" cuando alguien haga clic
 #### Mostrar mensajes de estado
-```// Función para mostrar mensajes de estado
+``` javascript
+// Función para mostrar mensajes de estado
 function showStatus(message, type) {
     statusDiv.textContent = message;
     statusDiv.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
@@ -242,7 +247,8 @@ Explicación sencilla: Esta función es como mostrar un anuncio temporal:
 3. Según el tipo de mensaje (éxito o error), elegimos un color (verde o rojo)
 4. setTimeout(() => {...}, 3000): Configuramos un temporizador para que el mensaje desaparezca después de 3 segundos
 ### 5. Manejadores de eventos
-```// Manejar envío del formulario (crear)
+``` javascript
+// Manejar envío del formulario (crear)
 taskForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     await createTask(titleInput.value, completedSelect.value);
@@ -269,7 +275,8 @@ Explicación sencilla: Aquí configuramos los "botones" para que hagan cosas cua
 	- Reseteamos el formulario a su estado normal
 3. cancelBtn.addEventListener('click', resetForm): Si hacemos clic en "Cancelar", volvemos al estado normal
 #### Funciones de manejo
-```// Manejar clic en botón editar
+``` javascript
+// Manejar clic en botón editar
 function handleEdit(e) {
     const taskId = e.target.getAttribute('data-id');
     const task = tasks.find(t => t.id == taskId);
@@ -319,7 +326,8 @@ Explicación sencilla:
 	- Olvidamos qué tarea estábamos editando
 	- Restaura los botones originales (muestra "Agregar", oculta "Actualizar" y "Cancelar")
 ### 6. Iniciar la aplicación
-```// Cargar tareas al iniciar la aplicación
+``` javascript
+// Cargar tareas al iniciar la aplicación
 document.addEventListener('DOMContentLoaded', fetchTasks);
 
 ```
