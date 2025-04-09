@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Básico con API</title>
+    <!-- Tailwind CSS desde CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">CRUD de Tareas</h1>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <form id="task-form" class="mb-6">
+                <div class="mb-4">
+                    <label for="title" class="block text-gray-700 font-bold mb-2">Título de la Tarea:</label>
+                    <input type="text" id="title" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <div class="mb-4">
+                    <label for="completed" class="block text-gray-700 font-bold mb-2">Estado:</label>
+                    <select id="completed"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="false">Pendiente</option>
+                        <option value="true">Completado</option>
+                    </select>
+                </div>
+
+                <div class="flex gap-2">
+                    <button type="submit" id="submit-btn"
+                        class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors">
+                        Agregar Tarea
+                    </button>
+                    <button type="button" id="update-btn" style="display: none;"
+                        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors">
+                        Actualizar Tarea
+                    </button>
+                    <button type="button" id="cancel-btn" style="display: none;"
+                        class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+
+            <div id="status" class="mb-4 p-3 rounded-md hidden" role="alert"></div>
+
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Lista de Tareas</h2>
+
+            <div id="loading" class="text-center py-4">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-300 border-t-blue-600">
+                </div>
+                <p class="mt-2 text-gray-600">Cargando tareas...</p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table id="tasks-table" class="w-full table-auto hidden">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-4 py-2 text-left text-gray-700">ID</th>
+                            <th class="px-4 py-2 text-left text-gray-700">Título</th>
+                            <th class="px-4 py-2 text-left text-gray-700">Estado</th>
+                            <th class="px-4 py-2 text-left text-gray-700">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tasks-list"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Importar el archivo JavaScript externo -->
+    <script src="app.js"></script>
+</body>
+
+</html>
